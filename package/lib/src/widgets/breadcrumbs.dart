@@ -33,9 +33,9 @@ class Breadcrumbs<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) => _scrollToEnd());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToEnd());
 
-    final defaultTextColor = Theme.of(context).textTheme.button!.color;
+    final defaultTextColor = Theme.of(context).textTheme.labelLarge!.color;
 
     return ShaderMask(
       shaderCallback: (Rect bounds) {

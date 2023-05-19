@@ -14,7 +14,6 @@ import 'package:filesystem_picker/src/widgets/file_system_list.dart';
 import 'package:filesystem_picker/src/widgets/filename_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
 import 'package:path/path.dart' as pt;
 
 /// FileSystem file or folder picker dialog.
@@ -135,7 +134,7 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
   void initState() {
     super.initState();
 
-    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _requestPermission();
       if (widget.rootDirectories.isEmpty) {
         throw Exception("rootDirectories can't be empty.");
@@ -298,11 +297,11 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
       child: Theme(
         data: ThemeData(
           textTheme: TextTheme(
-            button: TextStyle(
-              color: AppBarTheme.of(context).textTheme?.headline6?.color ??
+            labelLarge: TextStyle(
+              color: AppBarTheme.of(context).foregroundColor ??
                   (widget.themeData ?? Theme.of(context))
                       .primaryTextTheme
-                      .headline6
+                      .titleLarge
                       ?.color,
             ),
           ),
@@ -341,11 +340,11 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
                     title: Text('Select Directory',
                         style: (widget.themeData ?? Theme.of(context))
                             .primaryTextTheme
-                            .headline6),
+                            .titleLarge),
                     leading: Icon(Icons.storage,
                         color: Theme.of(context)
                             .primaryTextTheme
-                            .headline6!
+                            .titleLarge!
                             .color),
                   ),
                 ),
@@ -394,7 +393,8 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
               color: (widget.themeData ?? Theme.of(context)).primaryColor,
               child: ListTile(
                 leading: Icon(Icons.library_add_check,
-                    color: Theme.of(context).primaryTextTheme.headline6!.color),
+                    color:
+                        Theme.of(context).primaryTextTheme.titleLarge!.color),
                 title: Text(
                   'Selected ' +
                       (widget.fsType == FilesystemType.all
@@ -407,7 +407,7 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
                       ')',
                   style: (widget.themeData ?? Theme.of(context))
                       .primaryTextTheme
-                      .headline6,
+                      .titleLarge,
                 ),
               ),
             ),
@@ -520,8 +520,8 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
             Expanded(
                 child: TextButton.icon(
               style: TextButton.styleFrom(
-                primary: AppBarTheme.of(context).textTheme?.headline6?.color ??
-                    Theme.of(context).primaryTextTheme.headline6?.color,
+                foregroundColor: AppBarTheme.of(context).foregroundColor ??
+                    Theme.of(context).primaryTextTheme.titleLarge?.color,
               ),
               icon: Icon(Icons.cancel),
               label: (widget.cancelText != null)
@@ -536,13 +536,14 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
             )),
             VerticalDivider(
               width: 1,
-              color: (widget.themeData ?? Theme.of(context)).accentColor,
+              color:
+                  (widget.themeData ?? Theme.of(context)).colorScheme.primary,
             ),
             Expanded(
                 child: TextButton.icon(
               style: TextButton.styleFrom(
-                primary: AppBarTheme.of(context).textTheme?.headline6?.color ??
-                    Theme.of(context).primaryTextTheme.headline6?.color,
+                foregroundColor: AppBarTheme.of(context).foregroundColor ??
+                    Theme.of(context).primaryTextTheme.titleLarge?.color,
               ),
               icon: Icon(Icons.check_circle),
               label: (widget.pickText != null)
