@@ -5,7 +5,6 @@ import 'package:filesystem_picker/src/constants/typedefs/typedefs.dart';
 import 'package:filesystem_picker/src/utils/helpers/file_icon_helper.dart';
 import 'package:filesystem_picker/src/widgets/filename_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class FilesystemListTile extends StatelessWidget {
   final FilesystemType fsType;
@@ -39,7 +38,8 @@ class FilesystemListTile extends StatelessWidget {
         ? (themeData ?? Theme.of(context)).primaryColorLight
         : (item is File
             ? (themeData ?? Theme.of(context)).unselectedWidgetColor
-            : (folderIconColor ?? (themeData ?? Theme.of(context)).primaryColor));
+            : (folderIconColor ??
+                (themeData ?? Theme.of(context)).primaryColor));
     if (item is Directory) {
       ic = Icon(
         Icons.folder,
@@ -103,8 +103,8 @@ class FilesystemListTile extends StatelessWidget {
       item.path,
       isDirectory: item is Directory,
       textStyle: isSelected
-          ? (themeData ?? Theme.of(context)).primaryTextTheme.bodyText1
-          : (themeData ?? Theme.of(context)).textTheme.bodyText1,
+          ? (themeData ?? Theme.of(context)).primaryTextTheme.bodyLarge
+          : (themeData ?? Theme.of(context)).textTheme.bodyLarge,
     );
 
     return tx;
@@ -114,7 +114,9 @@ class FilesystemListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       key: Key(item.absolute.path),
-      color: isSelected ? (themeData ?? Theme.of(context)).primaryColorDark : Colors.transparent,
+      color: isSelected
+          ? (themeData ?? Theme.of(context)).primaryColorDark
+          : Colors.transparent,
       child: InkWell(
           onTap: () {
             if (item is Directory) {

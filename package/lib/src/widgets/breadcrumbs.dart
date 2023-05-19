@@ -65,7 +65,7 @@ class Breadcrumbs<T> extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 8),
               child: TextButton(
                 style: TextButton.styleFrom(
-                    primary: (index == (items.length - 1))
+                    foregroundColor: (index == (items.length - 1))
                         ? (textColor ?? defaultTextColor)
                         : (textColor ?? defaultTextColor)!.withOpacity(0.75)),
                 onPressed: () {

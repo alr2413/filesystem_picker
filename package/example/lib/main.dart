@@ -183,7 +183,7 @@ class _DemoPageState extends State<DemoPage> {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       'Directory Picker',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
 
@@ -210,7 +210,7 @@ class _DemoPageState extends State<DemoPage> {
                     padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       'File Picker',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
 
@@ -221,7 +221,8 @@ class _DemoPageState extends State<DemoPage> {
                     ),
 
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.purple),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple),
                     onPressed: (temporaryDirectory != null)
                         ? () => _openFile(context)
                         : null,

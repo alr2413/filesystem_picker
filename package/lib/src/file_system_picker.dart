@@ -391,23 +391,25 @@ class _FilesystemPickerState extends State<FilesystemPicker> {
             visible: widget.multiSelect,
             child: Material(
               color: (widget.themeData ?? Theme.of(context)).primaryColor,
-              child: ListTile(
-                leading: Icon(Icons.library_add_check,
-                    color:
-                        Theme.of(context).primaryTextTheme.titleLarge!.color),
-                title: Text(
-                  'Selected ' +
-                      (widget.fsType == FilesystemType.all
-                          ? 'Items'
-                          : widget.fsType == FilesystemType.file
-                              ? 'Files'
-                              : 'Folders') +
-                      ' (' +
-                      selectedPaths.length.toString() +
-                      ')',
-                  style: (widget.themeData ?? Theme.of(context))
-                      .primaryTextTheme
-                      .titleLarge,
+              child: SafeArea(
+                child: ListTile(
+                  leading: Icon(Icons.library_add_check,
+                      color:
+                          Theme.of(context).primaryTextTheme.titleLarge!.color),
+                  title: Text(
+                    'Selected ' +
+                        (widget.fsType == FilesystemType.all
+                            ? 'Items'
+                            : widget.fsType == FilesystemType.file
+                                ? 'Files'
+                                : 'Folders') +
+                        ' (' +
+                        selectedPaths.length.toString() +
+                        ')',
+                    style: (widget.themeData ?? Theme.of(context))
+                        .primaryTextTheme
+                        .titleLarge,
+                  ),
                 ),
               ),
             ),
